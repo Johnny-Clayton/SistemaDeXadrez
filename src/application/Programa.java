@@ -23,14 +23,14 @@ public class Programa {
 				UI.clearScreen();
 				UI.printMatch(chessMatch, captured);
 				System.out.println();
-				System.out.print("Source: ");
+				System.out.print("Fonte: ");
 				ChessPosition source = UI.readChessPosition(sc);
 				
 				boolean[][] possibleMoves = chessMatch.possibleMoves(source);
 				UI.clearScreen();
 				UI.printBoard(chessMatch.getPieces(), possibleMoves);
 				System.out.println();
-				System.out.print("Target: ");
+				System.out.print("Alvo: ");
 				ChessPosition target = UI.readChessPosition(sc);
 				
 				ChessPiece capturedPiece = chessMatch.performChessMove(source, target);
@@ -38,6 +38,13 @@ public class Programa {
 				if (capturedPiece != null) {
 					captured.add(capturedPiece);
 				}
+				
+				if (chessMatch.getPromoted() != null) {
+					System.out.print("Inserir peça para promoção (B/H/R/Q): ");
+					String type = sc.nextLine();
+					chessMatch.replacePromotedPiece(type);
+				}
+				
 			} catch (ChessException e) {
 				System.out.println(e.getMessage());
 				sc.nextLine();
