@@ -19,17 +19,10 @@ public class Rook extends ChessPiece{
 	@Override
 	public boolean[][] possibleMoves() {
 		boolean[][] mat = new boolean[getBoard().getRows()][getBoard().getColumns()];
-		
-		// Move para cima
+
 		move(-1, 0, mat);
-
-		// Move para esquerda
 		move(0, -1, mat);
-
-		// Move para direita
 		move(0, 1, mat);
-
-		// Move para baixo
 		move(1, 0, mat);
 		
 		return mat;
